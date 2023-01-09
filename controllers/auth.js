@@ -14,9 +14,14 @@ const loginUsuario = async(req, res = response ) => {
         if ( !usuario ) {
             return res.status(400).json({ ok: false, msg: 'El usuario no existe con ese email' });
         }
-    
-        const validPassword = bcrypt.compareSync( password, usuario.password );     // Confirmar los passwords
+        
+        if ( !usuario.estado ) {
+            return res.status(400).json({
+                msg: 'Usuario / Password no son correctos - estado: false'
+            });
+        }
 
+        const validPassword = bcrypt.compareSync( password, usuario.password );     // Confirmar los passwords
         if ( !validPassword ) {
             return res.status(400).json({ ok: false, msg: 'Password incorrecto' });
         }
@@ -41,3 +46,6 @@ const revalidarToken = async (req, res = response ) => {
 
 
 module.exports = { loginUsuario, revalidarToken }
+
+
+

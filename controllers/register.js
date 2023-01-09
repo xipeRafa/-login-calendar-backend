@@ -51,3 +51,5 @@ const crearUsuario = async(req, res = response ) => {
 }
 
 module.exports = { crearUsuario, usuariosGet }
+
+
