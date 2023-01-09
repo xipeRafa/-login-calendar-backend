@@ -27,7 +27,7 @@ const usuariosGet = async(req = request, res = response) => {
 const crearUsuario = async(req, res = response ) => {
 
     const { email, password } = req.body; // obtenemos el body
-
+     console.log(email)
     try {
         let usuario = await Usuario.findOne({ email }); // validar si existe usuario
         if ( usuario ) {

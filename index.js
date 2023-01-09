@@ -2,7 +2,7 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
 const { dbConnection } = require('./database/config');
-
+const morgan = require('morgan')
 // Crear el servidor de express
 const app = express();
 
@@ -11,6 +11,7 @@ dbConnection();
 
 // CORS
 app.use(cors())
+app.use(morgan('tiny'))
 
 // Directorio Público
 app.use( express.static('public') );
